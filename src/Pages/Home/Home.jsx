@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { EffectCoverflow, Pagination } from "swiper";
+import ChefsCard from "./ChefsCard";
 //
 
 const Home = () => {
@@ -18,11 +19,13 @@ const Home = () => {
       .then((data) => setPhotos(data));
   }, []);
   return (
-    <div className="flex flex-col md:flex-row container mx-auto lg:h-[calc(100vh-72px)] mt-6 items-center gap-3 px-3 md:px-0">
-      <div className="w-full md:w-1/4 text-3xl font-semibold">
-        <h1>Indulge in our authentic Bengali cuisine at Spice Route</h1>
+    <div className="container mx-auto">
+    <div className="flex flex-col lg:flex-row lg:h-[calc(100vh-72px)] mt-6 items-center gap-3 px-3 md:px-0">
+      <div className="w-full lg:w-1/4">
+        <h1 className="text-3xl font-semibold my-2">Indulge in our authentic Bengali cuisine at Spice Route</h1>
+        <p>Experience the rich and flavorful taste of Bengali cuisine at our restaurant. From our signature fish dishes to our aromatic biryanis, our menu is a journey through the vibrant flavors of Bengal. Indulge in our traditional recipes made with fresh, locally sourced ingredients and let our attentive staff take you on a culinary adventure you won't forget.</p>
       </div>
-      <div className="w-full md:w-3/4">
+      <div className="w-full lg:w-3/4">
         <Swiper
           effect={"coverflow"}
           grabCursor={true}
@@ -40,11 +43,18 @@ const Home = () => {
           className="mySwiper"
         >
           {photos.map((photo) => (
-            <SwiperSlide>
-              <ImageCards key={photo.id} photo={photo}></ImageCards>
+            <SwiperSlide key={photo.id}>
+              <ImageCards photo={photo}></ImageCards>
             </SwiperSlide>
           ))}
         </Swiper>
+      </div>
+      </div>
+      <div className="px-3 md:px-0 my-8">
+        <h1 className="my-4 bg-gradient-to-r from-[blue] to-[red] bg-clip-text text-transparent text-4xl font-bold text-center tracking-widest">Our Awesome Chefs</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {chefs.map(chef=><ChefsCard key={chef.id} chef={chef}></ChefsCard>)}
+        </div>
       </div>
     </div>
   );
