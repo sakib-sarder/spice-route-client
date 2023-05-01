@@ -1,9 +1,12 @@
 import React from 'react';
+import Header from '../Shared/Header';
+import { Outlet } from 'react-router-dom';
 
 const MainLayout = () => {
     return (
-        <div>
-            Main Layout
+        <div className='bg-gray-100'>
+            <Header></Header>
+            <Outlet></Outlet>
         </div>
     );
 };
