@@ -40,6 +40,16 @@ const Header = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink
+              to="/login"
+              className={({ isActive }) =>
+                isActive ? "text-blue-500" : "default"
+              }
+            >
+              Login
+            </NavLink>
+          </li>
+          <li>
             <Link
               to="/about"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
@@ -103,6 +113,16 @@ const Header = () => {
                         }
                       >
                         Blog
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink
+                        to="/login"
+                        className={({ isActive }) =>
+                          isActive ? "text-blue-500" : "default"
+                        }
+                      >
+                        Login
                       </NavLink>
                     </li>
                     <li>
