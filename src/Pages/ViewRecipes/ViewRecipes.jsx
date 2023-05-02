@@ -1,26 +1,35 @@
 import React from "react";
+import { FaHeart } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 
 const ViewRecipes = () => {
   const singleChef = useLoaderData();
   console.log(singleChef);
-  const { name, image, likes, numbers_of_recipes, years_of_experience } =
+  const { name, image, bio, likes, numbers_of_recipes, years_of_experience } =
     singleChef;
   return (
     <div className="container mx-auto my-6">
       <div>
-        <div className="card card-side bg-base-100 shadow-xl h-[35vh]">
-          <figure className="w-1/4">
-            <img className="h-full"
+        <div className="h-[35vh] flex items-center py-8">
+          <figure className="w-2/5 h-full">
+            <img
+              className="h-full w-4/5 mx-auto rounded-xl"
               src={image}
               alt="Chef Picture"
             />
           </figure>
-          <div className="card-body w-3/4">
-                      <h2 className="card-title">{name}</h2>
-            <p>Click the button to watch on Jetflix app.</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Watch</button>
+          <div className=" w-3/5">
+            <h2 className="text-3xl font-semibold">{name}</h2>
+            <p>{bio}</p>
+            <p className="font-semibold pt-2">
+              Experieence: {years_of_experience} Years
+            </p>
+            <div className="flex justify-between mt-3">
+              <div className="flex items-center gap-1">
+                <FaHeart className="text-red-500"/>
+                <p className="font-semibold">{likes}</p>
+              </div>
+              <div><p className="font-semibold">Numbers of Recipes: {numbers_of_recipes}</p></div>
             </div>
           </div>
         </div>
