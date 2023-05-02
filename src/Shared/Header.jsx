@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaUser } from "react-icons/fa";
 import { HiOutlineXMark } from "react-icons/hi2";
 import { IoRestaurantSharp } from "react-icons/io5";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <div className="bg-gray-200 px-4 py-5 mx-auto container">
@@ -49,7 +51,8 @@ const Header = () => {
               Login
             </NavLink>
           </li>
-          <li>
+          {
+            user && <li>
             <Link
               to="/about"
               className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
@@ -57,6 +60,7 @@ const Header = () => {
               <FaUser />
             </Link>
           </li>
+          }
         </ul>
         {/* Mobile Navbar Section */}
         <div className="lg:hidden">
