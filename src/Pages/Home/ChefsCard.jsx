@@ -1,9 +1,9 @@
 import React from "react";
 import { FaHeartbeat } from "react-icons/fa";
 import { HiHeart } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 
 const ChefsCard = ({ chef }) => {
-  console.log(chef);
   const { id, image, name, likes, numbers_of_recipes, years_of_experience } =
     chef;
   return (
@@ -20,9 +20,11 @@ const ChefsCard = ({ chef }) => {
             <HiHeart className="text-red-600 text-2xl " />
             <p className="text-lg font-semibold">{likes}</p>
           </div>
-          <button className="bg-amber-500 px-2 py-1 rounded-md font-semibold text-lg">
-            View Recipes
-          </button>
+          <Link to={`/chef/${id}`}>
+            <button className="bg-amber-500 px-2 py-1 rounded-md font-semibold text-lg">
+              View Recipes
+            </button>
+          </Link>
         </div>
       </div>
     </div>

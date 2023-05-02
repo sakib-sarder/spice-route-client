@@ -14,7 +14,7 @@ const Home = () => {
   const chefs = useLoaderData();
   const [photos, setPhotos] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/images")
+    fetch("https://spice-route-server-shakib232002-gmailcom.vercel.app/images")
       .then((res) => res.json())
       .then((data) => setPhotos(data));
   }, []);

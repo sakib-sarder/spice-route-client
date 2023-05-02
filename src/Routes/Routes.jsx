@@ -3,6 +3,8 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layout/MainLayout";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login";
+import Register from "../Pages/Register";
+import ViewRecipes from "../Pages/ViewRecipes/ViewRecipes";
 
 const router = createBrowserRouter([
   {
@@ -11,13 +13,22 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-            element: <Home></Home>,
-        loader: ()=> fetch('http://localhost:5000/chefs')
-        },
-        {
-            path: "login",
-            element: <Login></Login>
-        }
+        element: <Home></Home>,
+        loader: () => fetch("https://spice-route-server-shakib232002-gmailcom.vercel.app/chefs"),
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "register",
+        element: <Register></Register>,
+      },
+      {
+        path: "chef/:id",
+        element: <ViewRecipes></ViewRecipes>,
+        loader: ({params})=> fetch(`https://spice-route-server-shakib232002-gmailcom.vercel.app/chefs/${params.id}`)
+      },
     ],
   },
 ]);
