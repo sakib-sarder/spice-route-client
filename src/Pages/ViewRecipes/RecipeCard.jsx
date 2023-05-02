@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { FaThumbsUp } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -9,7 +8,7 @@ const RecipeCard = ({ recipe }) => {
     const [isFavourite, setIsFavourite] = useState(false);
     const { image, name, ingredients, method, rating } = recipe;
     const handleFavourite = () => {
-        toast("Added To Favourite 😊")
+        toast(`${name} Added To Favourite 😊`)
         setIsFavourite(!isFavourite);
     }
   return (

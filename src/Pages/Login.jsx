@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, singInWithGoogle } = useContext(AuthContext);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -13,6 +13,17 @@ const Login = () => {
     const password = form.password.value;
     console.log(email, password);
     signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        // console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    singInWithGoogle()
       .then(result => {
         const loggedUser = result.user;
         console.log(loggedUser);
@@ -70,14 +81,14 @@ const Login = () => {
           </p>
         </form>
         <div className="space-y-2 my-2">
-          <div className="bg-white mx-auto flex justify-center gap-2 py-2 rounded-lg">
+          <button onClick={handleGoogleLogin} className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg">
             <FaGoogle className="text-2xl " />
             <span className="text-lg font-semibold ">Sign In With Google</span>
-          </div>
-          <div className="bg-white mx-auto flex justify-center gap-2 py-2 rounded-lg">
+          </button>
+          <button className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg">
             <FaGithub className="text-2xl " />
             <span className="text-lg font-semibold ">Sign In With Google</span>
-          </div>
+          </button>
         </div>
       </div>
     </div>
