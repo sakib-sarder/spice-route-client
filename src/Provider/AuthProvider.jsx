@@ -1,5 +1,6 @@
 import React, { createContext } from "react";
 import {
+  GithubAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   getAuth,
@@ -11,6 +12,7 @@ import app from "../firebase/firebase.config";
 export const AuthContext = createContext();
 const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
   //Register with email and password
@@ -28,6 +30,11 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
 
+  // Login with Github
+  const singInWithGithub = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
+
   const user = { name: "sakib" };
 
   const authInfo = {
@@ -35,6 +42,7 @@ const AuthProvider = ({ children }) => {
     user,
     signIn,
     singInWithGoogle,
+    singInWithGithub,
   };
 
   return (

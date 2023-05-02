@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
-  const { signIn, singInWithGoogle } = useContext(AuthContext);
+  const { signIn, singInWithGoogle, singInWithGithub } =
+    useContext(AuthContext);
 
+  // Login with email and password
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -21,16 +23,28 @@ const Login = () => {
         console.log(error);
       });
   };
-
+  // Login with Google
   const handleGoogleLogin = () => {
     singInWithGoogle()
-      .then(result => {
+      .then((result) => {
+        const loggedUser = result.user;
+        // console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // Login with Github
+  const handleGithubLogin = () => {
+    singInWithGithub()
+      .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
-      })
+      });
   };
   return (
     <div className="flex justify-center h-[calc(100vh-296px)] items-center ">
@@ -81,11 +95,17 @@ const Login = () => {
           </p>
         </form>
         <div className="space-y-2 my-2">
-          <button onClick={handleGoogleLogin} className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg">
+          <button
+            onClick={handleGoogleLogin}
+            className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg"
+          >
             <FaGoogle className="text-2xl " />
             <span className="text-lg font-semibold ">Sign In With Google</span>
           </button>
-          <button className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg">
+          <button
+            onClick={handleGithubLogin}
+            className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg"
+          >
             <FaGithub className="text-2xl " />
             <span className="text-lg font-semibold ">Sign In With Google</span>
           </button>
