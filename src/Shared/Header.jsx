@@ -51,16 +51,16 @@ const Header = () => {
               Login
             </NavLink>
           </li>
-          {
-            user && <li>
-            <Link
-              to="/about"
-              className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
-            >
-              <FaUser />
-            </Link>
-          </li>
-          }
+          {user && (
+            <li>
+              <Link
+                to="/about"
+                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
+              >
+                <FaUser />
+              </Link>
+            </li>
+          )}
         </ul>
         {/* Mobile Navbar Section */}
         <div className="lg:hidden">
@@ -92,7 +92,7 @@ const Header = () => {
                       title="Close Menu"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <HiOutlineXMark className="text-2xl "/>
+                      <HiOutlineXMark className="text-2xl " />
                     </button>
                   </div>
                 </div>
