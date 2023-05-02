@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import ViewRecipes from "../Pages/ViewRecipes/ViewRecipes";
 import ErrorPage from "../Pages/ErrorPage";
+import Blog from "../Pages/Blog";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
         element: <ViewRecipes></ViewRecipes>,
         loader: ({params})=> fetch(`https://spice-route-server-shakib232002-gmailcom.vercel.app/chefs/${params.id}`)
       },
+      {
+        path: "blog",
+        element: <Blog></Blog>
+      }
     ],
   },
 ]);

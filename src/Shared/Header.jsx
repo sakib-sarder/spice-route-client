@@ -6,14 +6,23 @@ import { IoRestaurantSharp } from "react-icons/io5";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div className="bg-gray-200 px-4 py-5 mx-auto container">
       <div className="relative flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/" className="inline-flex gap-1 items-center">
-          <span className="ml-2 text-2xl font-bold tracking-widest animate-text bg-gradient-to-r from-[#D040F5] to-[#5F54FD] bg-clip-text text-transparent">
+          <span className="ml-2 text-2xl font-bold tracking-widest  bg-gradient-to-r from-[#D040F5] to-[#5F54FD] bg-clip-text text-transparent">
             spiceRoute
           </span>
           <IoRestaurantSharp className="text-2xl text-amber-500" />
@@ -41,24 +50,34 @@ const Header = () => {
               Blog
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                isActive ? "text-blue-500" : "default"
-              }
-            >
-              Login
-            </NavLink>
-          </li>
+          {user ? (
+            <li>
+              <button onClick={handleLogout}>Logout</button>
+            </li>
+          ) : (
+            <li>
+              <NavLink
+                to="/login"
+                className={({ isActive }) =>
+                  isActive ? "text-blue-500" : "default"
+                }
+              >
+                Login
+              </NavLink>
+            </li>
+          )}
           {user && (
             <li>
-              <Link
-                to="/about"
-                className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
+              <div
+                className="w-10 h-10 tooltip tooltip-bottom tooltip-success"
+                data-tip={user.displayName}
               >
-                <FaUser />
-              </Link>
+                <img
+                  className="rounded-full"
+                  src={user.photoURL}
+                  alt="User Image"
+                />
+              </div>
             </li>
           )}
         </ul>
@@ -119,24 +138,36 @@ const Header = () => {
                         Blog
                       </NavLink>
                     </li>
-                    <li>
-                      <NavLink
-                        to="/login"
-                        className={({ isActive }) =>
-                          isActive ? "text-blue-500" : "default"
-                        }
-                      >
-                        Login
-                      </NavLink>
-                    </li>
-                    <li>
-                      <Link
-                        to="/about"
-                        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400"
-                      >
-                        <FaUser />
-                      </Link>
-                    </li>
+                    {user ? (
+                      <li>
+                        <button onClick={handleLogout}>Logout</button>
+                      </li>
+                    ) : (
+                      <li>
+                        <NavLink
+                          to="/login"
+                          className={({ isActive }) =>
+                            isActive ? "text-blue-500" : "default"
+                          }
+                        >
+                          Login
+                        </NavLink>
+                      </li>
+                    )}
+                    {user && (
+                      <li>
+                        <div
+                          className="w-10 h-10 tooltip tooltip-bottom tooltip-success"
+                          data-tip={user.displayName}
+                        >
+                          <img
+                            className="rounded-full"
+                            src={user.photoURL}
+                            alt="User Image"
+                          />
+                        </div>
+                      </li>
+                    )}
                   </ul>
                 </nav>
               </div>
