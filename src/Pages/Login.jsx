@@ -1,22 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
+  const { signIn } = useContext(AuthContext);
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+    signIn(email, password)
+      .then(result => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  };
   return (
     <div className="flex justify-center h-[calc(100vh-296px)] items-center ">
       <div className="px-4">
-        <form className="w-[90vw] md:w-[60vw] lg:w-[30vw] border p-4 bg-white rounded-xl">
+        <form
+          onSubmit={handleLogin}
+          className="w-[90vw] md:w-[60vw] lg:w-[30vw] border p-4 bg-white rounded-xl"
+        >
           <h1 className="text-3xl text-center  font-bold ">Please Login</h1>
           <div className="form-control">
             <label htmlFor="email" className="label">
               <span className="label-text">Email</span>
             </label>
             <input
-              type="text"
+              type="email"
               placeholder="email"
               id="email"
+              name="email"
               className="input input-bordered"
+              required
             />
           </div>
           <div className="form-control">
@@ -25,9 +48,10 @@ const Login = () => {
             </label>
             <input
               id="password"
-              type="text"
+              type="password"
               placeholder="password"
               className="input input-bordered"
+              required
             />
             <label className="label">
               <Link className="underline">
