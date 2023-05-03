@@ -5,14 +5,14 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBxJmazm0BfsTtZab7Fri2P3oiCrTVeLq8",
-  authDomain: "spice-route-af900.firebaseapp.com",
-  projectId: "spice-route-af900",
-  storageBucket: "spice-route-af900.appspot.com",
-  messagingSenderId: "543508031454",
-  appId: "1:543508031454:web:e6c5aa0687826161f61f4f"
+  apiKey: import.meta.env.VITE_APIKEY,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN,
+  projectId: import.meta.env.VITE_PROJECTID,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID,
+  appId: import.meta.env.VITE_APPID
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export default app;
+export default app; 
