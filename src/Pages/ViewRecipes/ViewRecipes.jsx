@@ -18,19 +18,19 @@ const ViewRecipes = () => {
   return (
     <div className="container mx-auto my-6">
       <div>
-        <div className="h-[55vh] flex items-center py-8">
-          <LazyLoad className="w-2/5 h-full" threshold={0.95}>
+        <div className="md:h-[55vh] flex items-center  flex-col md:flex-row px-2">
+          <LazyLoad className="md:w-2/5 w-full  h-full" threshold={0.95}>
             <img
-              className="h-full w-4/5 mx-auto rounded-xl"
+              className="h-full md:w-4/5 w-full mx-auto rounded-xl"
               src={image}
               alt="Chef Picture"
             />
           </LazyLoad>
-          <div className=" w-3/5">
-            <h2 className="text-3xl font-semibold">{name}</h2>
-            <p>{bio}</p>
+          <div className="w-full md:w-3/5">
+            <h2 className="text-4xl font-semibold">{name}</h2>
+            <p className="ps-2">{bio}</p>
             <p className="font-semibold pt-2">
-              Experieence: {years_of_experience} Years
+              Experience: {years_of_experience} Years
             </p>
             <div className="flex justify-between mt-3">
               <div className="flex items-center gap-1">
@@ -46,7 +46,9 @@ const ViewRecipes = () => {
           </div>
         </div>
       </div>
-      <h1 className="text-center py-8 text-4xl font-bold text-amber-600">Recipes By {name}</h1>
+      <h1 className="text-center py-8 text-4xl font-bold text-amber-600">
+        Recipes By {name}
+      </h1>
       <div className="grid gap-3 px-2 lg:px-12">
         {recipes.map((recipe, key) => (
           <RecipeCard key={key} recipe={recipe}></RecipeCard>
