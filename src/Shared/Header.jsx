@@ -18,18 +18,18 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-gray-200 px-4 py-5 mx-auto container">
+    <div className="bg-amber-200 px-4 py-5 mx-auto container shadow-lg">
       <div className="relative flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/" className="inline-flex gap-1 items-center">
-          <span className="ml-2 text-2xl font-bold tracking-widest  bg-gradient-to-r from-[#D040F5] to-[#5F54FD] bg-clip-text text-transparent">
+          <IoRestaurantSharp className="text-2xl text-amber-500" />
+          <span className=" text-2xl font-bold tracking-widest  bg-gradient-to-r from-[#D040F5] to-[#5F54FD] bg-clip-text text-transparent">
             spiceRoute
           </span>
           <IoRestaurantSharp className="text-2xl text-amber-500" />
         </Link>
 
-        {/* Nav Items Section */}
-        <ul className="items-center hidden space-x-8 lg:flex">
+        <ul className="items-center hidden space-x-4 text-lg font-semibold lg:flex">
           <li>
             <NavLink
               to="/"
@@ -50,12 +50,15 @@ const Header = () => {
               Blog
             </NavLink>
           </li>
+        </ul>
+        {/* Nav Items Section */}
+        <ul className="items-center hidden space-x-4 lg:flex">
           {user ? (
             <li>
-              <button onClick={handleLogout}>Logout</button>
+              <button className="border px-2 py-1 font-semibold border-gray-600 shadow-lg rounded-md" onClick={handleLogout}>Logout</button>
             </li>
           ) : (
-            <li>
+            <li className="text-lg font-semibold">
               <NavLink
                 to="/login"
                 className={({ isActive }) =>
@@ -69,7 +72,7 @@ const Header = () => {
           {user && (
             <li>
               <div
-                className="w-10 h-10 tooltip tooltip-bottom tooltip-success"
+                className="w-10 h-10 tooltip tooltip-bottom tooltip-warning"
                 data-tip={user.displayName}
               >
                 <img
@@ -93,12 +96,13 @@ const Header = () => {
           </button>
           {isMenuOpen && (
             <div className="absolute top-0 left-0  w-full z-10">
-              <div className="p-5 bg-white border rounded shadow-sm">
+              <div className="p-5 bg-gray-200 border rounded shadow-sm">
                 {/* Logo & Button section */}
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <Link to="/" className="inline-flex gap-1 items-center">
-                      <span className="ml-2 text-2xl font-bold tracking-widest animate-text bg-gradient-to-r from-[#D040F5] to-[#5F54FD] bg-clip-text text-transparent">
+                      <IoRestaurantSharp className="text-2xl text-amber-500" />
+                      <span className="text-2xl font-bold tracking-widest animate-text bg-gradient-to-r from-[#D040F5] to-[#5F54FD] bg-clip-text text-transparent">
                         spiceRoute
                       </span>
                       <IoRestaurantSharp className="text-2xl text-amber-500" />
@@ -117,7 +121,7 @@ const Header = () => {
                 </div>
                 {/* Mobile Nav Items Section */}
                 <nav>
-                  <ul className="space-y-4">
+                  <ul className="space-y-4 text-lg font-semibold ">
                     <li>
                       <NavLink
                         to="/"
@@ -140,7 +144,7 @@ const Header = () => {
                     </li>
                     {user ? (
                       <li>
-                        <button onClick={handleLogout}>Logout</button>
+                        <button className="border px-2 py-1 font-semibold border-gray-300 shadow-lg rounded-md" onClick={handleLogout}>Logout</button>
                       </li>
                     ) : (
                       <li>
@@ -157,7 +161,7 @@ const Header = () => {
                     {user && (
                       <li>
                         <div
-                          className="w-10 h-10 tooltip tooltip-bottom tooltip-success"
+                          className="w-10 h-10 tooltip tooltip-bottom tooltip-warning"
                           data-tip={user.displayName}
                         >
                           <img

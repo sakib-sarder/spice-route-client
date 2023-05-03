@@ -25,8 +25,8 @@ const Blog = () => {
             content={() => ref.current}
           />
         </div>
-        <div ref={ref} className="my-4 grid gap-3">
-          <div className="bg-slate-300 p-2 rounded-lg">
+        <div ref={ref} className="my-4 grid gap-3 px-2">
+          <div className="bg-slate-200 p-2 rounded-lg">
             <h1 className="text-3xl py-2 font-bold text-amber-600">
               1. Tell us the differences between uncontrolled and controlled
               components.
@@ -48,7 +48,7 @@ const Blog = () => {
               and not by React.
             </p>
           </div>
-          <div className="bg-green-400 p-2 rounded-lg">
+          <div className="bg-slate-200 p-2 rounded-lg">
             <h1 className="text-3xl py-2 font-bold  text-amber-600">
               2. How to validate React props using PropTypes ?
             </h1>
@@ -62,11 +62,11 @@ const Blog = () => {
               resilient to unexpected data and easier for others to understand.
             </p>
           </div>
-          <div className="bg-gray-600 p-2 rounded-lg">
+          <div className="bg-slate-200 p-2 rounded-lg">
             <h1 className="text-3xl py-2 font-bold  text-amber-600">
               3. Tell us the difference between nodejs and express js.
             </h1>
-            <div className="ps-4 text-[#f0fdff]">
+            <div className="ps-4">
               <span className="font-medium">
                 Node.js and Express.js are different but related technologies
                 used in web development.
@@ -111,7 +111,7 @@ const Blog = () => {
               </ul>
             </div>
           </div>
-          <div className="bg-teal-400 p-2 rounded-lg">
+          <div className="bg-slate-200 p-2 rounded-lg">
             <h1 className="text-3xl py-2 font-bold  text-amber-600">
               4. What is a custom hook, and why will you create a custom hook?
             </h1>

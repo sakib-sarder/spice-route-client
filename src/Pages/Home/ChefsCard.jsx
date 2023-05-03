@@ -14,7 +14,7 @@ const ChefsCard = ({ chef }) => {
       </LazyLoad>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
-        <p>Years of experience: {years_of_experience}</p>
+        <p>Experience: {years_of_experience} years</p>
         <p>Numbers of recipes: {numbers_of_recipes}</p>
         <div className="flex justify-between ">
           <div className="flex items-center gap-1">
