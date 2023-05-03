@@ -21,6 +21,7 @@ const Login = () => {
       .catch((error) => {
         console.log(error.message);
       });
+    form.reset();
   };
   // Login with Google
   const handleGoogleLogin = () => {
@@ -106,7 +107,7 @@ const Login = () => {
             className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg"
           >
             <FaGithub className="text-2xl " />
-            <span className="text-lg font-semibold ">Sign In With Google</span>
+            <span className="text-lg font-semibold ">Sign In With Github</span>
           </button>
         </div>
       </div>

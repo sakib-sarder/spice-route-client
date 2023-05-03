@@ -24,6 +24,7 @@ const Register = () => {
       .catch((error) => {
         console.log(error);
       });
+    form.reset();
   };
 
   return (
@@ -43,6 +44,7 @@ const Register = () => {
             id="name"
             name="name"
             className="input input-bordered"
+            required
           />
         </div>
         <div className="form-control">
@@ -55,6 +57,7 @@ const Register = () => {
             id="email"
             name="email"
             className="input input-bordered"
+            required
           />
         </div>
         <div className="form-control">
@@ -63,10 +66,11 @@ const Register = () => {
           </label>
           <input
             id="password"
-            type="text"
+            type="password"
             name="password"
             placeholder="password"
             className="input input-bordered"
+            required
           />
         </div>
         <div className="form-control">
@@ -79,6 +83,7 @@ const Register = () => {
             name="photoURL"
             placeholder="Photo URL"
             className="input input-bordered"
+            required
           />
         </div>
         <div className="form-control mt-6">

@@ -1,6 +1,7 @@
 import React from "react";
 import { FaHeartbeat } from "react-icons/fa";
 import { HiHeart } from "react-icons/hi2";
+import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";
 
 const ChefsCard = ({ chef }) => {
@@ -8,9 +9,9 @@ const ChefsCard = ({ chef }) => {
     chef;
   return (
     <div className="card  bg-base-100 shadow-xl">
-      <figure className="h-96">
-        <img src={image} alt="Chefs Image" className="w-full h-full" />
-      </figure>
+      <LazyLoad className="h-96"  threshold={0.95}>
+        <img src={image} alt="Chefs Image" className="w-full h-full rounded-t-lg" />
+      </LazyLoad>
       <div className="card-body">
         <h2 className="card-title">{name}</h2>
         <p>Years of experience: {years_of_experience}</p>

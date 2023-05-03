@@ -2,6 +2,7 @@ import React from "react";
 import { FaHeart } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
+import LazyLoad from "react-lazy-load";
 
 const ViewRecipes = () => {
   const singleChef = useLoaderData();
@@ -18,13 +19,13 @@ const ViewRecipes = () => {
     <div className="container mx-auto my-6">
       <div>
         <div className="h-[55vh] flex items-center py-8">
-          <figure className="w-2/5 h-full">
+          <LazyLoad className="w-2/5 h-full" threshold={0.95}>
             <img
               className="h-full w-4/5 mx-auto rounded-xl"
               src={image}
               alt="Chef Picture"
             />
-          </figure>
+          </LazyLoad>
           <div className=" w-3/5">
             <h2 className="text-3xl font-semibold">{name}</h2>
             <p>{bio}</p>
