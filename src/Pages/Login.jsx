@@ -1,11 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
-  const { signIn, singInWithGoogle, singInWithGithub } =
+  const { signIn, singInWithGoogle, singInWithGithub, user} =
     useContext(AuthContext);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
@@ -23,9 +24,13 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.log(error.message);
+        if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
+          setError("Invalid email or password");
+        } else {
+          setError(error.message);
+        }
       });
-    form.reset();
+      form.reset();
   };
   // Login with Google
   const handleGoogleLogin = () => {
@@ -33,7 +38,7 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         // console.log(loggedUser);
-        navigate(from, {replace: true})
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
@@ -46,12 +51,13 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
-        navigate(from, {replace: true})
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.log(error);
       });
   };
+  console.log(user);
   return (
     <div className="flex justify-center h-[calc(100vh-296px)] items-center ">
       <div className="px-4">
@@ -99,18 +105,19 @@ const Login = () => {
               Register
             </Link>
           </p>
+          {error && <p className="text-center text-red-500">{error}</p>}
         </form>
         <div className="space-y-2 my-2">
           <button
             onClick={handleGoogleLogin}
-            className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg"
+            className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg shadow-xl"
           >
             <FaGoogle className="text-2xl " />
             <span className="text-lg font-semibold ">Sign In With Google</span>
           </button>
           <button
             onClick={handleGithubLogin}
-            className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg"
+            className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg shadow-xl"
           >
             <FaGithub className="text-2xl " />
             <span className="text-lg font-semibold ">Sign In With Github</span>

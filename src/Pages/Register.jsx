@@ -1,9 +1,11 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, loading } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -13,6 +15,11 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const name = form.name.value;
     // console.log(email, password, photoURL);
+    if (password.length < 6) {
+      setError("Password can't be less than 6 character");
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
@@ -20,13 +27,21 @@ const Register = () => {
         updateUserProfile(name, photoURL)
           .then(() => {})
           .catch((error) => {});
+        navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.message);
       });
     form.reset();
   };
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-[80vh] ">
+        <progress className="progress w-56 progress-info"></progress>
+      </div>
+    );
+  }
   return (
     <div className="h-[75vh] flex justify-center items-center">
       <form
@@ -95,6 +110,11 @@ const Register = () => {
             Login
           </Link>
         </p>
+        {error && (
+          <p className="text-center text-red-500">
+            <small>{error}</small>
+          </p>
+        )}
       </form>
     </div>
   );
