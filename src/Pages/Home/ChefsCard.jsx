@@ -1,5 +1,4 @@
 import React from "react";
-import { FaHeartbeat } from "react-icons/fa";
 import { HiHeart } from "react-icons/hi2";
 import LazyLoad from "react-lazy-load";
 import { Link } from "react-router-dom";

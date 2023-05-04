@@ -23,7 +23,7 @@ const Header = () => {
         {/* Logo Section */}
         <Link to="/" className="inline-flex gap-1 items-center">
           <IoRestaurantSharp className="text-2xl text-amber-500" />
-          <span className=" text-2xl font-bold tracking-widest  bg-gradient-to-r from-[#8B1874] to-[#E11299] bg-clip-text text-transparent">
+          <span className=" text-3xl font-bold tracking-wider  bg-gradient-to-r from-[#8B1874] to-[#E11299] bg-clip-text text-transparent">
             spiceRoute
           </span>
           <IoRestaurantSharp className="text-2xl text-amber-500" />
@@ -95,14 +95,14 @@ const Header = () => {
             <FaBars className="text-2xl" />
           </button>
           {isMenuOpen && (
-            <div className="absolute top-0 left-0  w-full z-10">
-              <div className="p-5 bg-gray-200 border rounded shadow-sm">
+            <div className="absolute top-0 left-0 w-full z-10">
+              <div className="p-5 bg-amber-200  rounded-lg shadow-lg">
                 {/* Logo & Button section */}
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <Link to="/" className="inline-flex gap-1 items-center">
                       <IoRestaurantSharp className="text-2xl text-amber-500" />
-                      <span className="text-2xl font-bold tracking-widest animate-text bg-gradient-to-r from-[#D040F5] to-[#5F54FD] bg-clip-text text-transparent">
+                      <span className="text-3xl font-bold tracking-wider bg-gradient-to-r from-[#8B1874] to-[#E11299] bg-clip-text text-transparent">
                         spiceRoute
                       </span>
                       <IoRestaurantSharp className="text-2xl text-amber-500" />
@@ -121,7 +121,7 @@ const Header = () => {
                 </div>
                 {/* Mobile Nav Items Section */}
                 <nav>
-                  <ul className="space-y-4 text-lg font-semibold ">
+                  <ul className="space-y-4 text-lg  font-semibold ">
                     <li>
                       <NavLink
                         to="/"

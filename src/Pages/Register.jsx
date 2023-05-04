@@ -14,14 +14,13 @@ const Register = () => {
     const password = form.password.value;
     const photoURL = form.photoURL.value;
     const name = form.name.value;
-    
-    if (password.length < 6) {
-      setError("Password can't be less than 6 character");
+
+    if (!password && password.length === 0) {
+      setError("Can't Register without password.");
       return;
     } else {
       setError("");
     }
-
     if (!email && email.length === 0) {
       setError("Can't Register without email.");
       return;
@@ -31,6 +30,13 @@ const Register = () => {
 
     if (!name && name.length === 0) {
       setError("Can't Register without name.");
+      return;
+    } else {
+      setError("");
+    }
+
+    if (password.length < 6) {
+      setError("Password can't be less than 6 character");
       return;
     } else {
       setError("");
@@ -46,16 +52,17 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
-        console.log(createdUser);
+        // console.log(createdUser);
         updateUserProfile(name, photoURL)
-          .then(() => {})
+          .then(() => {
+            form.reset();
+            navigate("/");
+          })
           .catch((error) => {});
-        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);
       });
-    form.reset();
   };
   return (
     <div className="h-[75vh] flex justify-center items-center">
