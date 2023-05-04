@@ -35,7 +35,7 @@ const RecipeCard = ({ recipe }) => {
               <Rating style={{ maxWidth: 120 }} value={rating} readOnly />
               <p className="font-bold text-lg">{rating}</p>
             </div>
-            <button onClick={handleFavourite} className= {`text-lg bg-amber-500 px-3 py-1 rounded-lg font-semibold ${isFavourite ? "opacity-70 cursor-not-allowed" : ""}`}  disabled={isFavourite}>
+            <button onClick={handleFavourite} className= {`text-lg bg-amber-400 px-3 py-1 rounded-lg font-semibold ${isFavourite ? "opacity-70 cursor-not-allowed" : ""}`}  disabled={isFavourite}>
             {isFavourite ? "Favourited" : "Favourite"}
             </button>
           </div>

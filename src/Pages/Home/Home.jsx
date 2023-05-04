@@ -24,8 +24,8 @@ const Home = () => {
     <div className="container mx-auto">
       <div className="flex flex-col lg:flex-row lg:h-[calc(100vh-72px)] mt-6 items-center gap-3 px-3 md:px-0">
         <div className="w-full lg:w-1/4">
-          <h1 className="text-4xl font-semibold my-2">
-            Find Authentic Bengali Recipe at <span className="text-amber-500">Spice Route</span>
+          <h1 className="text-4xl font-bold my-2">
+            Find Authentic Bengali Recipe at <span className="bg-gradient-to-r from-[#F3C843] to-[#F59E0B] bg-clip-text text-transparent">Spice Route</span>
           </h1>
           <p className="ps-1">
           Spice up your taste buds with The Spice Route  Bangladesh's ultimate recipe destination! Discover a world of flavorful Bangladeshi cuisine and fusion dishes, all with easy-to-follow instructions and stunning food photography. Explore new horizons in cooking with The Spice Route today!

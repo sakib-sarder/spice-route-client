@@ -20,14 +20,14 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         navigate(from, { replace: true });
       })
       .catch((error) => {
         if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
           setError("Invalid email or password");
+          return;
         } else {
-          setError(error.message);
+          setError("");
         }
       });
       form.reset();
@@ -57,7 +57,6 @@ const Login = () => {
         console.log(error);
       });
   };
-  console.log(user);
   return (
     <div className="flex justify-center h-[calc(100vh-296px)] items-center ">
       <div className="px-4">

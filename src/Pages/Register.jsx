@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
-  const { createUser, updateUserProfile, loading } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -14,10 +14,33 @@ const Register = () => {
     const password = form.password.value;
     const photoURL = form.photoURL.value;
     const name = form.name.value;
-    // console.log(email, password, photoURL);
+    
     if (password.length < 6) {
       setError("Password can't be less than 6 character");
       return;
+    } else {
+      setError("");
+    }
+
+    if (!email && email.length === 0) {
+      setError("Can't Register without email.");
+      return;
+    } else {
+      setError("");
+    }
+
+    if (!name && name.length === 0) {
+      setError("Can't Register without name.");
+      return;
+    } else {
+      setError("");
+    }
+
+    if (!photoURL && photoURL.length === 0) {
+      setError("Can't Register without photoURL.");
+      return;
+    } else {
+      setError("");
     }
 
     createUser(email, password)
@@ -34,14 +57,6 @@ const Register = () => {
       });
     form.reset();
   };
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center h-[80vh] ">
-        <progress className="progress w-56 progress-info"></progress>
-      </div>
-    );
-  }
   return (
     <div className="h-[75vh] flex justify-center items-center">
       <form
@@ -59,7 +74,6 @@ const Register = () => {
             id="name"
             name="name"
             className="input input-bordered"
-            required
           />
         </div>
         <div className="form-control">
@@ -72,7 +86,6 @@ const Register = () => {
             id="email"
             name="email"
             className="input input-bordered"
-            required
           />
         </div>
         <div className="form-control">
@@ -85,7 +98,6 @@ const Register = () => {
             name="password"
             placeholder="password"
             className="input input-bordered"
-            required
           />
         </div>
         <div className="form-control">
@@ -98,7 +110,6 @@ const Register = () => {
             name="photoURL"
             placeholder="Photo URL"
             className="input input-bordered"
-            required
           />
         </div>
         <div className="form-control mt-6">

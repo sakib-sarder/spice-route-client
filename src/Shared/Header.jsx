@@ -23,7 +23,7 @@ const Header = () => {
         {/* Logo Section */}
         <Link to="/" className="inline-flex gap-1 items-center">
           <IoRestaurantSharp className="text-2xl text-amber-500" />
-          <span className=" text-2xl font-bold tracking-widest  bg-gradient-to-r from-[#D040F5] to-[#5F54FD] bg-clip-text text-transparent">
+          <span className=" text-2xl font-bold tracking-widest  bg-gradient-to-r from-[#8B1874] to-[#E11299] bg-clip-text text-transparent">
             spiceRoute
           </span>
           <IoRestaurantSharp className="text-2xl text-amber-500" />
@@ -77,7 +77,7 @@ const Header = () => {
               >
                 <img
                   className="rounded-full"
-                  src={user.photoURL}
+                  src={user?.photoURL}
                   alt="User Image"
                 />
               </div>
@@ -166,7 +166,7 @@ const Header = () => {
                         >
                           <img
                             className="rounded-full"
-                            src={user.photoURL}
+                            src={user?.photoURL}
                             alt="User Image"
                           />
                         </div>
