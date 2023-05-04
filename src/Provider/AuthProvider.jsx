@@ -20,6 +20,7 @@ const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [reload, setReload] = useState(null);
 
   //Register with email and password
   const createUser = (email, password) => {
@@ -53,7 +54,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [reload]);
 
   //Update User Profile
   const updateUserProfile = (userName, userPhotoURl) => {
@@ -78,7 +79,8 @@ const AuthProvider = ({ children }) => {
     singInWithGoogle,
     singInWithGithub,
     logOut, 
-    updateUserProfile
+    updateUserProfile,
+    setReload
   };
 
   return (

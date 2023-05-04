@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, setReload } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -57,6 +57,7 @@ const Register = () => {
           .then(() => {
             form.reset();
             navigate("/");
+            setReload(true);
           })
           .catch((error) => {});
       })
@@ -64,6 +65,7 @@ const Register = () => {
         console.log(error.message);
       });
   };
+  
   return (
     <div className="h-[75vh] flex justify-center items-center">
       <form
