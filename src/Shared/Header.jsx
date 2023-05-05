@@ -1,7 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaBars, FaUser } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
 import { HiOutlineXMark } from "react-icons/hi2";
+import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { IoRestaurantSharp } from "react-icons/io5";
 import { AuthContext } from "../Provider/AuthProvider";
 
@@ -55,7 +56,7 @@ const Header = () => {
         <ul className="items-center hidden space-x-4 lg:flex">
           {user ? (
             <li>
-              <button className="border px-2 py-1 font-semibold border-gray-600 shadow-lg rounded-md" onClick={handleLogout}>Logout</button>
+              <button className="border px-2 py-1 font-semibold hover:bg-amber-500 border-gray-600 shadow-lg rounded-md" onClick={handleLogout}>Logout</button>
             </li>
           ) : (
             <li className="text-lg font-semibold">
@@ -92,7 +93,7 @@ const Header = () => {
             title="Open Menu"
             onClick={() => setIsMenuOpen(true)}
           >
-            <FaBars className="text-2xl" />
+            <HiOutlineBars3BottomRight className="text-4xl hover:text-amber-800"/>
           </button>
           {isMenuOpen && (
             <div className="absolute top-0 left-0 w-full z-10">
@@ -115,13 +116,13 @@ const Header = () => {
                       title="Close Menu"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      <HiOutlineXMark className="text-2xl " />
+                      <HiOutlineXMark className="text-4xl hover:text-amber-800" />
                     </button>
                   </div>
                 </div>
                 {/* Mobile Nav Items Section */}
                 <nav>
-                  <ul className="space-y-4 text-lg  font-semibold ">
+                  <ul className="space-y-2 text-lg  font-semibold">
                     <li>
                       <NavLink
                         to="/"
@@ -132,6 +133,7 @@ const Header = () => {
                         Home
                       </NavLink>
                     </li>
+                    <hr className="border-black"/>
                     <li>
                       <NavLink
                         to="/blog"
@@ -142,10 +144,14 @@ const Header = () => {
                         Blog
                       </NavLink>
                     </li>
+                    <hr className="border-black"/>
                     {user ? (
+                      <>
                       <li>
-                        <button className="border px-2 py-1 font-semibold border-gray-300 shadow-lg rounded-md" onClick={handleLogout}>Logout</button>
-                      </li>
+                        <button className="border px-2 py-1 font-semibold border-gray-300 hover:bg-amber-500 shadow-lg rounded-md" onClick={handleLogout}>Logout</button>
+                        </li>
+                        <hr className="border-black"/>
+                      </>
                     ) : (
                       <li>
                         <NavLink
