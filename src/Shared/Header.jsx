@@ -18,7 +18,7 @@ const Header = () => {
   };
 
   return (
-    <div className="bg-amber-200 px-4 py-5 mx-auto container shadow-lg">
+    <div className="bg-amber-200 px-4 py-5 mx-auto container shadow-lg ">
       <div className="relative flex items-center justify-between">
         {/* Logo Section */}
         <Link to="/" className="inline-flex gap-1 items-center">
@@ -72,11 +72,11 @@ const Header = () => {
           {user && (
             <li>
               <div
-                className="w-10 h-10 tooltip tooltip-bottom tooltip-warning"
+                className="tooltip tooltip-bottom tooltip-warning"
                 data-tip={user.displayName}
               >
                 <img
-                  className="rounded-full"
+                  className="w-10 h-10 rounded-full"
                   src={user?.photoURL}
                   alt="User Image"
                 />
@@ -161,11 +161,11 @@ const Header = () => {
                     {user && (
                       <li>
                         <div
-                          className="w-10 h-10 tooltip tooltip-bottom tooltip-warning"
+                          className="tooltip tooltip-bottom tooltip-warning"
                           data-tip={user.displayName}
                         >
                           <img
-                            className="rounded-full"
+                            className="w-10 h-10 rounded-full"
                             src={user?.photoURL}
                             alt="User Image"
                           />

@@ -50,7 +50,7 @@ const Login = () => {
     singInWithGithub()
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
+        // console.log(loggedUser);
         navigate(from, { replace: true });
       })
       .catch((error) => {
