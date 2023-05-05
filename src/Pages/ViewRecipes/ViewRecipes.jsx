@@ -46,7 +46,7 @@ const ViewRecipes = () => {
           </div>
         </div>
       </div>
-      <h1 className="text-center py-8 text-4xl font-bold text-amber-600">
+      <h1 className="text-center py-8 text-4xl font-bold text-[#F4AB1D]">
         Recipes By {name}
       </h1>
       <div className="grid gap-3 px-2 lg:px-12">

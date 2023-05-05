@@ -100,13 +100,14 @@ const Login = () => {
           </div>
           <p className="pt-2 text-sm">
             Don't Have an Account?{" "}
-            <Link to="/register" className=" underline">
+            <Link to="/register" className=" underline hover:text-blue-500">
               Register
             </Link>
           </p>
-          {error && <p className="text-center text-red-500">{error}</p>}
+          {error && <p className="text-center text-red-500"><small>{error}</small></p>}
         </form>
         <div className="space-y-2 my-2">
+          <p className="text-center"><small>or</small></p>
           <button
             onClick={handleGoogleLogin}
             className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg shadow-xl"
@@ -116,10 +117,10 @@ const Login = () => {
           </button>
           <button
             onClick={handleGithubLogin}
-            className="bg-white w-full mx-auto flex justify-center gap-2 py-2 rounded-lg shadow-xl"
+            className="bg-black w-full mx-auto flex justify-center gap-2 py-2 rounded-lg shadow-xl"
           >
-            <FaGithub className="text-2xl " />
-            <span className="text-lg font-semibold ">Sign In With Github</span>
+            <FaGithub className="text-2xl text-white" />
+            <span className="text-lg font-semibold text-white">Sign In With Github</span>
           </button>
         </div>
       </div>

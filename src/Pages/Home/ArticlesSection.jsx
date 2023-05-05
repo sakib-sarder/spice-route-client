@@ -12,14 +12,13 @@ const ArticlesSection = () => {
   }, []);
   return (
     <div>
-      <div className=" w-32 flex gap-2 rounded-sm px-3 py-1 font-semibold text-xl bg-amber-500">
-        <span>Articles</span>
-        <div className="bg-red-500 rounded-full px-2">{articles.length}</div>
-      </div>
+      <h1 className="text-4xl text-center font-bold py-2 text-[#F4AB1D] tracking-widest">
+        Articles
+      </h1>
       <div className="mt-4 grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-      {articles.map((article) => (
-        <Article key={article.id} article={article}></Article>
-      ))}
+        {articles.map((article) => (
+          <Article key={article.id} article={article}></Article>
+        ))}
       </div>
     </div>
   );

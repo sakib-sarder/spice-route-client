@@ -9,7 +9,7 @@ const Blog = () => {
       <div className="container mx-auto my-8">
         <div className="flex">
           <div className="flex-1">
-            <h1 className="text-center text-4xl font-bold text-amber-500">
+            <h1 className="text-center text-4xl font-bold text-[#F4AB1D]">
               Questions & Answers
             </h1>
           </div>
